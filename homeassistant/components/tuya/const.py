@@ -98,7 +98,12 @@ class DPCode(StrEnum):
 
     https://developer.tuya.com/en/docs/iot/standarddescription?id=K9i5ql6waswzq
     """
-
+#own - diivoo
+    COUNTDOWN_1 = "countdown_1"
+    COUNTDOWN_2 = "countdown_2"
+    USE_TIME_1 = "use_time_1"
+    USE_TIME_2 = "use_time_2"
+#
     AIR_QUALITY = "air_quality"
     ALARM_SWITCH = "alarm_switch"  # Alarm switch
     ALARM_TIME = "alarm_time"  # Alarm time

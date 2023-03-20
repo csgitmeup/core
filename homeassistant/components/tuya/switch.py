@@ -26,6 +26,17 @@ from .const import DOMAIN, TUYA_DISCOVERY_NEW, DPCode
 SWITCHES: dict[str, tuple[SwitchEntityDescription, ...]] = {
     # Smart Kettle
     # https://developer.tuya.com/en/docs/iot/fbh?id=K9gf484m21yq7
+    # Smart Water Timer
+    "ggq": (
+        SwitchEntityDescription(
+            key=DPCode.SWITCH_1,
+            name="Switch1",
+        ),
+        SwitchEntityDescription(
+            key=DPCode.SWITCH_2,
+            name="Switch2",
+        ),
+    ),
     "bh": (
         SwitchEntityDescription(
             key=DPCode.START,

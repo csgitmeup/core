@@ -82,6 +82,24 @@ BATTERY_SENSORS: tuple[TuyaSensorEntityDescription, ...] = (
 # end up being a sensor.
 # https://developer.tuya.com/en/docs/iot/standarddescription?id=K9i5ql6waswzq
 SENSORS: dict[str, tuple[TuyaSensorEntityDescription, ...]] = {
+    # Smart Water Timer
+    "ggq": (
+        TuyaSensorEntityDescription(
+            key=DPCode.USE_TIME_1,
+            name="Total runtime 1",
+            entity_category=EntityCategory.DIAGNOSTIC,
+            state_class=SensorStateClass.MEASUREMENT,
+            icon="mdi:clock-outline",
+        ),
+        TuyaSensorEntityDescription(
+            key=DPCode.USE_TIME_2,
+            name="Total runtime 2",
+            entity_category=EntityCategory.DIAGNOSTIC,
+            state_class=SensorStateClass.MEASUREMENT,
+            icon="mdi:clock-outline",
+        ),
+        *BATTERY_SENSORS,
+    ),
     # Multi-functional Sensor
     # https://developer.tuya.com/en/docs/iot/categorydgnbj?id=Kaiuz3yorvzg3
     "dgnbj": (

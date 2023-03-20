@@ -24,6 +24,19 @@ from .const import DEVICE_CLASS_UNITS, DOMAIN, TUYA_DISCOVERY_NEW, DPCode, DPTyp
 NUMBERS: dict[str, tuple[NumberEntityDescription, ...]] = {
     # Multi-functional Sensor
     # https://developer.tuya.com/en/docs/iot/categorydgnbj?id=Kaiuz3yorvzg3
+    # Smart Water Timer
+    "ggq": (
+        NumberEntityDescription(
+            key=DPCode.COUNTDOWN_1,
+            name="countdown_1",
+            icon="mdi:timer",
+        ),
+        NumberEntityDescription(
+            key=DPCode.COUNTDOWN_2,
+            name="countdown_2",
+            icon="mdi:timer",
+        ),
+    ),
     "dgnbj": (
         NumberEntityDescription(
             key=DPCode.ALARM_TIME,
