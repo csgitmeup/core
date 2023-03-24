@@ -48,6 +48,21 @@ TAMPER_BINARY_SENSOR = TuyaBinarySensorEntityDescription(
 BINARY_SENSORS: dict[str, tuple[TuyaBinarySensorEntityDescription, ...]] = {
     # Multi-functional Sensor
     # https://developer.tuya.com/en/docs/iot/categorydgnbj?id=Kaiuz3yorvzg3
+    # Smart Water Timer
+    #"ggq": (
+    #    TuyaBinarySensorEntityDescription(
+    #        key=DPCode.WORK_MODE_1,
+    #        name="work_mode_1",
+    #        device_class=BinarySensorDeviceClass.WINDOW,
+    #        on_value={"manual","auto"},
+    #    ),
+    #    TuyaBinarySensorEntityDescription(
+    #        key=DPCode.WORK_MODE_2,
+    #        name="work_mode_2",
+    #        device_class=BinarySensorDeviceClass.WINDOW,
+    #        on_value={"manual","auto"},
+    #    ),
+    #),
     "dgnbj": (
         TuyaBinarySensorEntityDescription(
             key=DPCode.GAS_SENSOR_STATE,

@@ -98,7 +98,28 @@ SENSORS: dict[str, tuple[TuyaSensorEntityDescription, ...]] = {
             state_class=SensorStateClass.MEASUREMENT,
             icon="mdi:clock-outline",
         ),
-        *BATTERY_SENSORS,
+        TuyaSensorEntityDescription(
+            key=DPCode.BATTERY_PERCENTAGE,
+            name="Battery",
+            native_unit_of_measurement=PERCENTAGE,
+            device_class=SensorDeviceClass.BATTERY,
+            state_class=SensorStateClass.MEASUREMENT,
+            entity_category=EntityCategory.DIAGNOSTIC,
+        ),
+         TuyaSensorEntityDescription(
+            key=DPCode.WORK_MODE_1,
+            name="Modus 1",
+            entity_category=EntityCategory.DIAGNOSTIC,
+            state_class=SensorStateClass.MEASUREMENT,
+            icon="mdi:clock-outline",
+        ),
+                TuyaSensorEntityDescription(
+            key=DPCode.WORK_MODE_2,
+            name="Modus 2",
+            entity_category=EntityCategory.DIAGNOSTIC,
+            state_class=SensorStateClass.MEASUREMENT,
+            icon="mdi:clock-outline",
+        ),       
     ),
     # Multi-functional Sensor
     # https://developer.tuya.com/en/docs/iot/categorydgnbj?id=Kaiuz3yorvzg3

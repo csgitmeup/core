@@ -31,10 +31,12 @@ SWITCHES: dict[str, tuple[SwitchEntityDescription, ...]] = {
         SwitchEntityDescription(
             key=DPCode.SWITCH_1,
             name="Switch1",
+            icon="mdi:water-pump",
         ),
         SwitchEntityDescription(
             key=DPCode.SWITCH_2,
             name="Switch2",
+            icon="mdi:water-pump",
         ),
     ),
     "bh": (
