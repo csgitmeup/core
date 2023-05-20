@@ -27,7 +27,7 @@ NUMBERS: dict[str, tuple[NumberEntityDescription, ...]] = {
     # Smart Water Timer
     "ggq": (
         NumberEntityDescription(
-            key=DPCode.Duration,
+            key=DPCode.DURATION,
             name="duration",
             icon="mdi:timer",
         ),
