@@ -99,6 +99,7 @@ class DPCode(StrEnum):
     https://developer.tuya.com/en/docs/iot/standarddescription?id=K9i5ql6waswzq
     """
 #own - diivoo
+    DURATION = "duration"
     COUNTDOWN_1 = "countdown_1"
     COUNTDOWN_2 = "countdown_2"
     USE_TIME_1 = "use_time_1"
