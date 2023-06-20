@@ -9,6 +9,7 @@ from typing import Any, cast
 
 from aioesphomeapi import (
     COMPONENT_TYPE_TO_INFO,
+    AlarmControlPanelInfo,
     APIClient,
     APIVersion,
     BinarySensorInfo,
@@ -46,6 +47,7 @@ _LOGGER = logging.getLogger(__name__)
 
 # Mapping from ESPHome info type to HA platform
 INFO_TYPE_TO_PLATFORM: dict[type[EntityInfo], Platform] = {
+    AlarmControlPanelInfo: Platform.ALARM_CONTROL_PANEL,
     BinarySensorInfo: Platform.BINARY_SENSOR,
     ButtonInfo: Platform.BUTTON,
     CameraInfo: Platform.CAMERA,
@@ -126,6 +128,10 @@ class RuntimeEntryData:
     def signal_static_info_updated(self) -> str:
         """Return the signal to listen to for updates on static info."""
         return f"esphome_{self.entry_id}_on_list"
+
+    def signal_component_static_info_updated(self, component_key: str) -> str:
+        """Return the signal to listen to for updates on static info for a specific component_key."""
+        return f"esphome_{self.entry_id}_static_info_updated_{component_key}"
 
     @callback
     def async_update_ble_connection_limits(self, free: int, limit: int) -> None:
@@ -266,8 +272,14 @@ class RuntimeEntryData:
         )
         stale_state.discard(subscription_key)
         current_state_by_type[key] = state
-        if subscription_key in self.state_subscriptions:
-            self.state_subscriptions[subscription_key]()
+        if subscription := self.state_subscriptions.get(subscription_key):
+            try:
+                subscription()
+            except Exception as ex:  # pylint: disable=broad-except
+                # If we allow this exception to raise it will
+                # make it all the way to data_received in aioesphomeapi
+                # which will cause the connection to be closed.
+                _LOGGER.exception("Error while calling subscription: %s", ex)
 
     @callback
     def async_update_device_state(self, hass: HomeAssistant) -> None:
