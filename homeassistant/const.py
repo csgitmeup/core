@@ -1,20 +1,19 @@
 """Constants used by Home Assistant components."""
 from __future__ import annotations
 
+from enum import StrEnum
 from typing import Final
-
-from .backports.enum import StrEnum
 
 APPLICATION_NAME: Final = "HomeAssistant"
 MAJOR_VERSION: Final = 2023
-MINOR_VERSION: Final = 8
+MINOR_VERSION: Final = 10
 PATCH_VERSION: Final = "0.dev0"
 __short_version__: Final = f"{MAJOR_VERSION}.{MINOR_VERSION}"
 __version__: Final = f"{__short_version__}.{PATCH_VERSION}"
-REQUIRED_PYTHON_VER: Final[tuple[int, int, int]] = (3, 10, 0)
+REQUIRED_PYTHON_VER: Final[tuple[int, int, int]] = (3, 11, 0)
 REQUIRED_NEXT_PYTHON_VER: Final[tuple[int, int, int]] = (3, 11, 0)
 # Truthy date string triggers showing related deprecation warning messages.
-REQUIRED_NEXT_PYTHON_HA_RELEASE: Final = "2023.8"
+REQUIRED_NEXT_PYTHON_HA_RELEASE: Final = ""
 
 # Format for platform files
 PLATFORM_FORMAT: Final = "{platform}.{domain}"
@@ -40,6 +39,7 @@ class Platform(StrEnum):
     HUMIDIFIER = "humidifier"
     IMAGE = "image"
     IMAGE_PROCESSING = "image_processing"
+    LAWN_MOWER = "lawn_mower"
     LIGHT = "light"
     LOCK = "lock"
     MAILBOX = "mailbox"
@@ -58,6 +58,7 @@ class Platform(StrEnum):
     TTS = "tts"
     VACUUM = "vacuum"
     UPDATE = "update"
+    WAKE_WORD = "wake_word"
     WATER_HEATER = "water_heater"
     WEATHER = "weather"
 
@@ -458,6 +459,9 @@ ATTR_HIDDEN: Final = "hidden"
 # Location of the entity
 ATTR_LATITUDE: Final = "latitude"
 ATTR_LONGITUDE: Final = "longitude"
+
+# Elevation of the entity
+ATTR_ELEVATION: Final = "elevation"
 
 # Accuracy of location in meters
 ATTR_GPS_ACCURACY: Final = "gps_accuracy"
